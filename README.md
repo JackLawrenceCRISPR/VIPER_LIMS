@@ -14,8 +14,8 @@
 - **Customisable clientside:** Build your own VIPER modules in Python and help from Boa Constructor
 - **Boa Constructor:** Make new HTML-Javascript-Python front-end modules with simple drag and drop
 - **Client Scripting:** Beginner friendly code with complete control for advanced programmers
-- **Client Commands:** Scriptable client to server requests passed through Server Strategies
-- **Server Strategies:** Programmable permission authenticated serverside functions
+- **Client Commands:** Scriptable client to server requests passed through Server Methods
+- **Server Methods:** Programmable permission authenticated serverside functions
 - **Security:** OAuth2 user verification and encrypted HTTP requests
 - **SQL:** Intrinsic support for MySQL, PostgreSQL and SQLite 
 - **OAuth2:** Intrinsic support for Github and LinkedIn OAuth2 Apps
@@ -109,9 +109,10 @@ Highly modular, simple, completely customisable scripts for rapidly evolving tea
 5. Restart VIPER_Client
 
 ## Coding a *Module_Script.py*:
+```python
 Expired_Ethanol_List = LIMSQuery(False, "Reagents", ["Ethanol","Expired"], "fetchall_criteria")) #Access the LIMS SQL Database
 ```
-Which could execute the following on the server through a fetchall_criteria Strategy:
+Which could execute the following on the server through a fetchall_criteria Method:
 ```sql
 SELECT * FROM Ethanol WHERE Expired = True
 ```
@@ -121,7 +122,7 @@ In this example we are fetching all Expired Reagents:
 **False**:     Initiates LIMSQuery's Third Party App support,  
 **Database**:  The database within which to execute the SQL process,  
 **Command**:   The data necessary to perform the request,  
-**Strategy**:  The VIPER_Server strategy through which the Command will be processed,  
+**Method**:  The VIPER_Server method through which the Command will be processed,  
 **)** 
 
 ```python
