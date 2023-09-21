@@ -148,8 +148,8 @@ def Process_User_Request(request):  #Runs when the user clicks a button on your 
         return jsonify(Info=SubmissionResponse) 
 ```
 
-## Jupyter Notebook intergration:  
-Enable Third Party App Intergration in Settings_Panel/Local_Settings  
+## Jupyter Notebook integration:  
+Enable Third Party App Integration in Settings_Panel/Local_Settings  
 ```python
 import sys, requests #required imports
 VIPERFolder = requests.post("http://127.0.0.1:7800/RefreshLogin", data="locate") #get VIPER_Utility folder
