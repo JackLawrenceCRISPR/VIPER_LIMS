@@ -344,6 +344,9 @@ def Install(Install_Type:str="Select", Install_Directory:str="Select", SDumps:st
                 config.write(configfile)                        
             os.chdir(oriignaldir)
         print("Installation complete.")
+        if hasattr(sys, 'getandroidapilevel'):
+            print("IMPORTANT: To run from Termux please use the following command in a fresh Termux terminal:")
+            print("python3 VIPER_Client/VIPER_Client.py")
     
     return os.getcwd()
 
