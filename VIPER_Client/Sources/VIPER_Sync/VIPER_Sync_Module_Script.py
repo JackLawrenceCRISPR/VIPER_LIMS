@@ -1,4 +1,4 @@
-CreateNewSyncZIP= False         #SET THIS TO TRUE TO SYNC NEW VERSIONS
+CreateNewSyncZIP= True         #SET THIS TO TRUE TO SYNC NEW VERSIONS
 
 def ModuleName():
     return "VIPER_Sync"
