@@ -1,11 +1,10 @@
 <h1 align="center">Virtual Interface for Production & Experimental Research</h1>
 <p align="center">
   <picture>
-    <source srcset="./Viper_Icon_Small.ico"> 
-    <img src="./Viper_Icon_Small.ico">
+    <source srcset="./VIPER_Client/Sources/VIPER/Viper_Icon_Small.ico"> 
+    <img src="./VIPER_Client/Sources/VIPER/Viper_Icon_Small.ico">
   </picture>
 </p>
-
 <h3 align="center">Easy | Modular | Lightweight</h3>
 
 <p align="center">A simple, highly scalable & adaptable LIMS system for rapidly evolving laboratory teams.</p>
@@ -38,18 +37,18 @@ pip install VIPER_LIMS
 Python terminal or script:  
 ```python
 import VIPER_LIMS
-VIPER_LIMS.Deploy_VIPER()
+VIPER_LIMS.Install()
 ```
 
 _Alternatively: download this repository and run VIPER_LIMS/VIPER_Installer.py_
 
 
-# Deploy Server
+# Install Server
 [Server Install Tutorial](VIPER_Videos/VIPER_Server_Install_Compressed.mp4)
 
 Store the *VIPER_Server will need:* information from the *SQL Database* and *OAuth 2.0 Service* sections below  
 Run the following command and provide the requested information:
-```VIPER_LIMS.Deploy_VIPER("Server")```
+```VIPER_LIMS.Install("Server")```
 
 ## Server IP Address: 
 Before you start you should know the **local IP of your VIPER_Server**.  
@@ -85,9 +84,9 @@ The service which hosts your users accounts, pick ONE:
 - Callback URL
 
 
-# Deploy Client
+# Install Client
 [Client Install Tutorial](VIPER_Videos/VIPER_Client_Install_Compressed.mp4)
-1. ```VIPER_LIMS.Deploy_VIPER("Client")```
+1. ```VIPER_LIMS.Install("Client")```
 2. Paste the desired deployment folder directory
 3. Paste the VIPER_Server SDump (or "none" if you do not have one yet)
 4. To connect to a new Server go to Settings_Panel -> Local_Settings, then Paste an SDump -> Click *Autosetup SDump*
