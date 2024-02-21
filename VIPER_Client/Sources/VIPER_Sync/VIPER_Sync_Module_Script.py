@@ -1,5 +1,5 @@
 CreateNewSyncZIP= True         #SET THIS TO TRUE TO SYNC NEW VERSIONS
-
+import sys
 def ModuleName():
     return "VIPER_Sync"
 
@@ -109,7 +109,11 @@ def Process_User_Request(request):
         if ButtonPressed == "Button 1": 
             if not VIPER_Sync_Host_Process[0]:
                 PrepareZIPFile(VIPER_GetRootDirectory())
-                VIPER_Sync_Host_Process[0] = subprocess.Popen(f'python "{HostSyncSibFile("VIPER_Sync_Host.py")}"') #terrible solution...
+                if hasattr(sys, 'getandroidapilevel'):
+                   
+                    VIPER_Sync_Host_Process[0] = subprocess.Popen(r'python3 VIPER_Client/Sources/VIPER_Sync/Host_Sync_Tool/VIPER_Sync_Host.py')
+                else:
+                    VIPER_Sync_Host_Process[0] = subprocess.Popen(f'python "{HostSyncSibFile("VIPER_Sync_Host.py")}"') #terrible solution...
                 time.sleep(0.6) #wait for it to boot up...?
 
             ResponseText = "No users requesting sync access. "
