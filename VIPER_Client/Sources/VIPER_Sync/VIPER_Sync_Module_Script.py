@@ -110,7 +110,6 @@ def Process_User_Request(request):
             if not VIPER_Sync_Host_Process[0]:
                 PrepareZIPFile(VIPER_GetRootDirectory())
                 if hasattr(sys, 'getandroidapilevel'):
-                   
                     VIPER_Sync_Host_Process[0] = subprocess.Popen(r'python3 VIPER_Client/Sources/VIPER_Sync/Host_Sync_Tool/VIPER_Sync_Host.py')
                 else:
                     VIPER_Sync_Host_Process[0] = subprocess.Popen(f'python "{HostSyncSibFile("VIPER_Sync_Host.py")}"') #terrible solution...
