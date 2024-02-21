@@ -1,0 +1,167 @@
+<!---Adapted from W3 sidebar example: https://www.w3schools.com/w3css/w3css_sidebar.asp -- Sb=Sidebar, Btn=Button--->
+<!---Adapted from W3 Jquery search example: https://www.w3schools.com/jquery/jquery_filters.asp-->
+
+
+<style>
+  .VIPER-Sb{
+    height:100%;
+    width:256px;
+    background-color:#f1ffe5;
+   
+    z-index: 998;
+    text-align:center; 
+    text-decoration: none; 
+    font-family: "MV Boli", "Comic Sans MS", "Comic Sans", Courier, monospace;
+  
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #000000;
+  
+    position: absolute;
+    top: 0;
+    left:1px;
+  }
+  
+  .VIPER-MainSbBtn{
+    z-index: 998;
+    height:48px;
+    width:128px; 
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    text-align:center; 
+    text-decoration: none; 
+    font-family: "MV Boli", "Comic Sans MS", "Comic Sans", Courier, monospace;
+    font-size: 32px;  
+    position: absolute;
+    top:0;
+    left:0;
+  
+  }
+  
+  .VIPER-SbBtn{
+    width:254px; 
+    display:inline-block;
+    padding:8px 0px;
+    vertical-align:middle;
+    overflow:wrap;
+    text-align:left; 
+    background-color:#cef1ff; 
+    text-decoration: none; 
+    font-family: "MV Boli", "Comic Sans MS", "Comic Sans", Courier, monospace;
+    font-size: 26px;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #000000;
+  }
+  
+  #SbSearchInput {
+    background-color:#dcffa3
+  }
+  
+  .VIPER-SbBtn a:link {
+    font-family: "MV Boli", "Comic Sans MS", "Comic Sans", Courier, monospace;
+    text-decoration: none;
+    color: rgb(106, 200, 255);
+    background-color: #fff7c7;
+    text-decoration: none;
+  }
+  .VIPER-SbBtn a:link, a:visited {
+    font-family: "MV Boli", "Comic Sans MS", "Comic Sans", Courier, monospace;
+    text-decoration: none;
+    background-color: #dcffa3;
+    color: #004cbe;
+  }
+  .VIPER-SbBtn a:link, a:hover, a:active {
+    font-family: "MV Boli", "Comic Sans MS", "Comic Sans", Courier, monospace;
+    text-decoration: none;
+    background-color: #598632;
+    color: #ffffff;
+  }
+  
+  .VIPER-List {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+  
+  </style>
+  
+
+
+
+<body>
+<script>
+  function VIPER_open() {
+    keys.SbOpen = true;
+    document.getElementById("V-Sidebar").style.width = "256px";
+    document.getElementById("V-Sidebar").style.display = "block";
+    document.getElementById("openNav").style.display = 'hidden';
+  }
+  function VIPER_close() {
+    keys.SbOpen = false;
+    document.getElementById("V-Sidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
+  }
+</script>
+
+<!--- //VIPER-Bite Adapted from W3 sidebar example: https://www.allbloggertricks.com/2021/04/determine-if-multiple-keys-are-pressed.html --->
+<script>
+let keys = {
+  z: false,
+  c: false,
+  SbOpen: false,
+};
+
+addEventListener("keydown", (event) => {
+if (event.key === "z") {
+  keys.z = true;
+}
+if (event.key === "c") {
+  keys.c = true;
+}
+
+addEventListener("keyup", (event) => {
+  if (event.key === "z") {
+    keys.z = false;
+  }
+  if (event.key === "c") {
+    keys.c = false;
+  }
+});
+
+if(keys.z && keys.c){
+  if (keys.SbOpen == false){
+  //keys.SbOpen = true;
+
+  VIPER_open()
+  } else {
+    //keys.SbOpen = false;
+    VIPER_close()
+  }
+}
+
+});
+</script>
+
+
+
+
+
+<script>
+  $(document).ready(function(){
+    $("#SbSearchInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#SbModuleList li").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+
+<div class="VIPER-Sb" style="display:none; overflow-y: scroll" id="V-Sidebar">
+  <!---Python will create the list--->
+  <input class="VIPER-SbBtn" id="SbSearchInput" type="text" placeholder="Search">
+  
+  
+  <ul class="VIPER-List" id="SbModuleList">

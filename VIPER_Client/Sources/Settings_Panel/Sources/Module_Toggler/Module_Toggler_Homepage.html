@@ -1,0 +1,119 @@
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!---JQuery module (Send requests [buttons] without refreshing the page)-->
+	<script 
+		src="https://code.jquery.com/jquery-3.5.1.min.js" 
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
+		crossorigin="anonymous"
+	></script>
+
+
+	<head>
+		<link rel="stylesheet" href="http://{{LocalIPAddress}}:7800/VIPER_Resources/VIPER_Default_CSS">	
+		<title>VIPER LIMS - {{LIMSRef}}</title>
+		<style>
+		.Textbox {font-size: 100%;word-wrap: break-word;}
+		.Label   {font-size: 100%;word-wrap: break-word;}
+		.Button {font-size: 100%;word-wrap: break-word;}
+		</style>
+		<title>VIPER LIMS</title>
+	</head>
+
+	<!---Page Begins Here-->
+	<body>
+		<script> 
+            $(function(){
+              $("#VIPER_Sidebar").load("http://{{LocalIPAddress}}:7800/Sidebar"); 
+            });
+        </script> 
+        <div id="VIPER_Sidebar"></div>
+		<!---Text Box-->
+<div id="content" style="width: 500px ; position:absolute; top: 60px;">
+	<script>
+		$(document).ready(function(){
+		  $("#MTSearchInput").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#MTModuleList li").filter(function() {
+			  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		  });
+		});
+		</script>
+	  
+	  <div class="VIPER-MT">
+		<!---Python will create the list--->
+		<input class="VIPER-MTBtn" id="MTSearchInput" type="text" placeholder="Search Modules">
+		<br style="line-height: 1px;">
+		<p style="display:inline-block;max-width: 140px; min-width: 140px; ">Module Name</p><p style="display:inline-block; white-space:pre;">Active         Listed</p>
+		<br style="line-height: 1px;">
+		<ul class="VIPER-List" id="MTModuleList">
+			{{VIPERModuleLister|safe}}
+		</ul>
+	</div>
+
+    <form name="VIPERForm", id="VIPERForm", value="{{LIMSPreRoute}}{{LIMSRef}}/InduceButton">														
+                        <input value="None" name="SubmitButtonPressed" id="SubmitButtonPressed" style="display:none;"></p>
+            
+                        <!---EVERY TEXT LABEL-->
+                        <p name="Label 3" id="Label 3" class="Label" value=""></p> 
+							<!---3 Unique Response ID-->
+                    </form>
+                    <!---EVERY BUTTON-->
+
+    </div>
+		 <!---EVERYTHING BELOW HERE STAYS THE SAME-->           
+				<script id="CorePageScript" type="text/javascript">
+
+
+
+					//Process the data returned from Python client     
+					function ProcessData(data) {
+						if (data) {
+							if (data.Info) {
+								//JSON FORMAT: #3ResponseID : Info?
+								DataInfo = data.Info
+								Object.keys(DataInfo).forEach(function(key) {
+									ObjectNewHTML = DataInfo[key]
+									if (ObjectNewHTML) { document.getElementById(key).innerHTML = ObjectNewHTML }
+								})
+							} else { console.log("Error: invalid response format") }    
+						} else {
+							console.log("Error: submission response failed") 
+						}
+					}
+							
+					const checkboxes = document.getElementsByClassName('ClickToggler')
+
+					for (let i = 0; i < checkboxes.length; i++) {
+						checkboxes[i].addEventListener('change', (event) => {
+							MyNewState = 0
+							MyTargetType = event.target.className
+							if (event.currentTarget.checked) {
+								MyNewState = 1
+							}
+
+							$.post("{{LIMSRef}}/InduceButton", {"toggleinfo":event.target.parentElement.innerHTML, "togglestate":MyNewState, "toggleidentity":MyTargetType})			//---Name of Flask /route
+							.done(function(data) {
+								ProcessData(data)
+							})													
+							.fail(function() {
+								ProcessData(false)
+							});
+						})
+					}
+
+					
+				$(document).ready(function(){
+					$("form[name='VIPERForm']").submit(function(event) {	//---1 [name=Unique form name
+						event.preventDefault();
+					});
+				});
+				</script>
+				<!---End Text Box-->	
+			</body>
+		</html>
+		
+		
+		
+		

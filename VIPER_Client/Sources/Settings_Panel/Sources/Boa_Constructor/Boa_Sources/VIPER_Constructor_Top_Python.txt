@@ -1,0 +1,21 @@
+'                        #Name your module
+    return RefName.strip().replace(" ", "_")
+
+#Import Modules
+from flask import jsonify
+import json
+import os
+
+#Import universal VIPER_Utility module
+OriginalDir = os.getcwd()
+os.chdir("..")
+os.chdir("VIPER")
+from VIPER_Utility import LIMSQuery, LogOutput
+os.chdir(OriginalDir)
+
+def Process_User_Request(request,LIMSPreRoute,LIMSReferralName):
+    #for each button name, try queryrequest 
+    #print(request.form)
+    SubmissionResponse = "A Python error has occured in "+ModuleName()+"_Module_Script.py"
+    try: #protect from request.form[name] not found and request failure
+        ButtonPressed = request.form['SubmitButtonPressed']
