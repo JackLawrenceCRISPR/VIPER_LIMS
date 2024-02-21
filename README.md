@@ -61,6 +61,10 @@ Please see the Client Installation Guide below and type ```exit()``` when you ar
 Once the installation is complete you can run the VIPER_Client through Termux with the command:  
 ```python3 VIPER_Client/VIPER_Client.py```
 
+### Updating on Android
+To update VIPER_Client from Android you should run ```-rm rf VIPER_Client```  
+Then to reinstall run the Android Installation commands above from python3 onwards, selecting "y" when prompted to update.
+
 # Server Installation Guide
 [Server Install Tutorial](VIPER_Videos/VIPER_Server_Install_Compressed.mp4)
 
