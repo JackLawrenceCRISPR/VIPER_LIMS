@@ -47,7 +47,7 @@ _Alternatively: download this repository and run VIPER_Installer/VIPER_LIMS/VIPE
 ### Android Installation
 Only the VIPER_Client is available for Android; it is not advised to run a VIPER_Server from Android devices.
 1. Install Termux from [Github](https://github.com/termux/termux-app/releases) or [FDroid](https://f-droid.org/en/packages/com.termux/)
-2. In the Termux app run the following commands in order, whilst reading and accepting appropraite requests:  
+2. In the Termux app run the following commands in order, whilst reading and accepting appropriate requests:  
 ```pkg install python```  
 ```apt update```  
 ```apt upgrade```  
