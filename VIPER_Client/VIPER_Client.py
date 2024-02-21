@@ -1,10 +1,3 @@
-##MAKE A GLOBAL VARIABLE
-# = #path to util file
-#delete the "viper utility" finding part in EVERY module script
-#replace with an os.environ import above^ saves us digging
-
-
-
 def Launch_VIPER_Client():
     ###The launch applucation for VIPER-LIMS###
     GoTo_After_Exited_URL = "https://www.google.co.uk/" #the URL the user is sent to after the close the client
@@ -84,14 +77,15 @@ def Launch_VIPER_Client():
     try:
         from cryptography.fernet import Fernet
     except ImportError:
-            if Install_Module_Choice("cryptography"):
-                if hasattr(sys, 'getandroidapilevel'):
-                    subprocess.run([sys.executable, "-m", "apt", "install", "python-cryptography"], check=True) #Special solution for Termux on Android (Rust compiler is usually required, this special version works on Android)
-                else:
-                    subprocess.run([sys.executable, "-m", "pip", "install", "cryptography"], check=True) 
-            else:
-                raise ImportError(f"Please install cryptography >pip install cryptography. If you are using termux on Android then you should use >apt install python-cryptography")
+            if hasattr(sys, 'getandroidapilevel'):
+                raise ImportError(f"Please use 'pkg install python-cryptography' and then run VIPER_Client.py again.")
 
+                    #the below line doesn't work?!
+                    #subprocess.run([sys.executable, "-m", "apt", "install", "python-cryptography"], check=True) #Special solution for Termux on Android (Rust compiler is usually required, this special version works on Android)
+            else:
+                Install_Module(ModuleName = "cryptography")
+                import cryptography
+         
             from cryptography.fernet import Fernet
 
     try:
