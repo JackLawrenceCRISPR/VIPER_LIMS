@@ -25,8 +25,8 @@
 - Freedom for advanced programmers
 - Competency based permissions
 
-
 # Installation
+### Desktop Installation
 [Requires Python (>=3.7)](https://www.python.org/downloads/)
 
 Operating System terminal:  
@@ -39,11 +39,29 @@ Python terminal or script:
 import VIPER_LIMS
 VIPER_LIMS.Install()
 ```
+Please see the Server Installation Guide or Client Installation Guide below.
 
-_Alternatively: download this repository and run VIPER_LIMS/VIPER_Installer.py_
+_Alternatively: download this repository and run VIPER_Installer/VIPER_LIMS/VIPER_Installer.py_
 
 
-# Install Server
+### Android Installation
+Only the VIPER_Client is available for Android; it is not advised to run a VIPER_Server from Android devices.
+1. Install Termux from [Github](https://github.com/termux/termux-app/releases) or [FDroid](https://f-droid.org/en/packages/com.termux/)
+2. In the Termux app run the following commands in order, whilst reading and accepting appropraite requests:  
+```pkg install python```  
+```apt update```  
+```apt upgrade```  
+```pkg install python-cryptography```  
+```pip install VIPER_LIMS```  
+```python3```  
+```import VIPER_LIMS```  
+```VIPER_LIMS.Install()```    
+Please see the Client Installation Guide below and type ```exit()``` when you are finished.
+
+Once the installation is complete you can run the VIPER_Client through Termux with the command:  
+```python3 VIPER_Client/VIPER_Client.py```
+
+# Server Installation Guide
 [Server Install Tutorial](VIPER_Videos/VIPER_Server_Install_Compressed.mp4)
 
 Store the *VIPER_Server will need:* information from the *SQL Database* and *OAuth 2.0 Service* sections below  
@@ -84,7 +102,7 @@ The service which hosts your users accounts, pick ONE:
 - Callback URL
 
 
-# Install Client
+# Client Installation Guide
 [Client Install Tutorial](VIPER_Videos/VIPER_Client_Install_Compressed.mp4)
 1. ```VIPER_LIMS.Install("Client")```
 2. Paste the desired deployment folder directory
