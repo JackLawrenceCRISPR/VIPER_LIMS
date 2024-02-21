@@ -10,9 +10,7 @@ def Install(Install_Type:str="Select", Install_Directory:str="Select", SDumps:st
 
     if hasattr(sys, 'getandroidapilevel'):
         if Install_Directory == "Select":
-            Install_Directory = r"/data/data/com.termux/files/home/storage/VIPER_LIMS"
-            if not os.path.exists(Install_Directory):
-                os.mkdir(Install_Directory)
+            Install_Directory = os.getcwd() #just dump it in termux files, it's easier to execute and we have good permissions.
         if Install_Type=="Select":
             Install_Type = "client"
 
