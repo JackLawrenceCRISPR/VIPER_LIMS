@@ -61,6 +61,14 @@ Please see the Client Installation Guide below and type ```exit()``` when you ar
 Once the installation is complete you can run the VIPER_Client through Termux with the command:  
 ```python3 VIPER_Client/VIPER_Client.py```
 
+_**Optional**_  
+Set up a custom command so VIPER is easier to launch:  
+```nano .bash_profile```  
+```alias viper='python3 VIPER_Client/VIPER_Client.py'```  
+```(now press ctrl + x to exit and approve the changes, then restart Termux)```  
+
+With your custom bash script you can launch the VIPER_Client by running: ```viper```  
+
 ### Updating on Android
 To update VIPER_Client from Android you should run ```-rm rf VIPER_Client```  
 Then to reinstall run the Android Installation commands above from python3 onwards, selecting "no" when prompted to use local source.
